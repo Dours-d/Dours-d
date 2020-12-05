@@ -5,7 +5,7 @@
 📫 How to reach me on Twitter @Gae_mon .
 
 <img src="https://www.codewars.com/users/Dours-d/badges/small" alt="">
-![](https://komarev.com/ghpvc/?username=dours-d&color=green)
+<img src="https://komarev.com/ghpvc/?username=dours-d&color=green" >
 
 <!--
 **Dours-d/Dours-d** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
