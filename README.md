@@ -6,7 +6,7 @@
 
 <img src="https://www.codewars.com/users/Dours-d/badges/small" alt="">
 <img src="https://komarev.com/ghpvc/?username=dours-d&color=brightgreen&label=visitors&style=flat-square" >
-
+<img src="https://github-readme-stats.vercel.app/api?username=dours-d&count_private=true&show_icons=true&theme=tokionight"
 <!--
 **Dours-d/Dours-d** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
