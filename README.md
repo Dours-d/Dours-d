@@ -1,6 +1,6 @@
 ### Hello there 👋
 🌱 I’m currently learning Solidity and Smart contracts @ IvanOnTech Academy.<br>
-💬 Ask me about my learning project.<br>
+💬 Ask me about my learning projects.<br>
 🔭 I’m currently working on finding a stage.<br>
 📫 How to reach me on Twitter @Gae_mon .
 
