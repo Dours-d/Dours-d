@@ -1,19 +1,4 @@
-name: Update Hijri Date
-on:
-  workflow_dispatch: 
-  schedule:
-    - cron: '0 0 * * *'
-
-permissions:
-  contents: write
-
-jobs:
-  update-readme:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Rebuild README
+- name: Rebuild README
         shell: python
         run: |
           import urllib.request
@@ -25,13 +10,18 @@ jobs:
               with urllib.request.urlopen("http://api.aladhan.com/v1/gToH") as response:
                   data = json.loads(response.read().decode())
                   h = data['data']['hijri']
-                  # Added the Arabic and English month
-                  date_str = f"### 🌙 {h['day']} {h['month']['en']} {h['year']} | {h['month']['ar']}"
+                  
+                  # Formatting with Ligatures: ﷽ at the top and ﷺ after the month
+                  # Use <h3> for better visibility on the profile
+                  date_str = (
+                      "### ﷽\n"
+                      f"### 🌙 {h['day']} {h['month']['en']} {h['year']} | {h['month']['ar']} ﷺ"
+                  )
           except Exception as e:
               print(f"API Error: {e}")
               sys.exit(1)
 
-          # 2. Define our markers
+          # 2. Markers (Must match exactly what is in your README.md)
           start_tag = "[//]: # (HIJRI_START)"
           end_tag = "[//]: # (HIJRI_END)"
 
@@ -39,7 +29,7 @@ jobs:
           with open("README.md", "r", encoding="utf-8") as f:
               lines = f.readlines()
 
-          # 4. Filter out any existing lines between the tags
+          # 4. Filter and Replace
           new_lines = []
           skip = False
           tag_found = False
@@ -47,7 +37,7 @@ jobs:
           for line in lines:
               if start_tag in line:
                   new_lines.append(line)
-                  new_lines.append(date_str + "\n")
+                  new_lines.append(date_str + "\n") # Insert the new date & ligatures
                   skip = True
                   tag_found = True
               elif end_tag in line:
@@ -57,17 +47,9 @@ jobs:
                   new_lines.append(line)
 
           if not tag_found:
-              print("Tags not found! Make sure they are in your README.")
+              print("Tags not found! Check your README.md markers.")
               sys.exit(1)
 
           # 5. Write back
           with open("README.md", "w", encoding="utf-8") as f:
               f.writelines(new_lines)
-
-      - name: Push Changes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git commit -m "Clean Hijri Update" || exit 0
-          git push
