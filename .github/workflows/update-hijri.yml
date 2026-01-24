@@ -1,4 +1,19 @@
-- name: Rebuild README
+name: Update Hijri Date
+on:
+  workflow_dispatch: 
+  schedule:
+    - cron: '0 0 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Rebuild README
         shell: python
         run: |
           import urllib.request
@@ -53,3 +68,10 @@
           # 5. Write back
           with open("README.md", "w", encoding="utf-8") as f:
               f.writelines(new_lines)
+      - name: Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Clean Hijri Update" || exit 0
+          git push
