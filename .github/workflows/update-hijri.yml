@@ -1,8 +1,12 @@
 name: Update Hijri Date
 on:
   schedule:
-    - cron: '0 0 * * *' # Runs every day at midnight
-  workflow_dispatch: # Allows you to run it manually
+    - cron: '0 0 * * *'
+  workflow_dispatch: 
+
+# This explicitly tells GitHub the script is allowed to push changes
+permissions:
+  contents: write
 
 jobs:
   update-readme:
@@ -13,8 +17,8 @@ jobs:
       - name: Get Hijri Date
         id: date
         run: |
-          # Fetching date from Aladhan API
-          RESPONSE=$(curl -s "http://api.aladhan.com/v1/gToH")
+          # We use -L to follow redirects and -f to fail on 404/500
+          RESPONSE=$(curl -sL "http://api.aladhan.com/v1/gToH")
           HIJRI=$(echo $RESPONSE | jq -r '.data.hijri.date')
           MONTH=$(echo $RESPONSE | jq -r '.data.hijri.month.en')
           YEAR=$(echo $RESPONSE | jq -r '.data.hijri.year')
@@ -22,13 +26,15 @@ jobs:
 
       - name: Update README
         run: |
-          DATE_STR="Today's Hijri Date: ${{ steps.date.outputs.full_date }}"
-          sed -i "//,//c\\n$DATE_STR\n" README.md
+          DATE_VAL="Today's Hijri Date: ${{ steps.date.outputs.full_date }}"
+          # This updated sed command is cleaner for multi-line replacement
+          sed -i "//,// { //! { //! d } }" README.md
+          sed -i "//a $DATE_VAL" README.md
 
       - name: Commit and Push
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m "Update Hijri date" || exit 0
-          git push
+          # Only commit if there are actually changes
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update Hijri date" && git push)
