@@ -1,3 +1,5 @@
-# Hi there, I'm [Your Name]! 👋
+# My GitHub Profile 🚀
 
-Welcome to my profile!
+The Hijri date will appear here after the Action runs!
+---
+Welcome to my page.
