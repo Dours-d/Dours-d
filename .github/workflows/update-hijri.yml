@@ -1,0 +1,34 @@
+name: Update Hijri Date
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs every day at midnight
+  workflow_dispatch: # Allows you to run it manually
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Get Hijri Date
+        id: date
+        run: |
+          # Fetching date from Aladhan API
+          RESPONSE=$(curl -s "http://api.aladhan.com/v1/gToH")
+          HIJRI=$(echo $RESPONSE | jq -r '.data.hijri.date')
+          MONTH=$(echo $RESPONSE | jq -r '.data.hijri.month.en')
+          YEAR=$(echo $RESPONSE | jq -r '.data.hijri.year')
+          echo "full_date=$HIJRI ($MONTH $YEAR)" >> $GITHUB_OUTPUT
+
+      - name: Update README
+        run: |
+          DATE_STR="Today's Hijri Date: ${{ steps.date.outputs.full_date }}"
+          sed -i "//,//c\\n$DATE_STR\n" README.md
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Update Hijri date" || exit 0
+          git push
