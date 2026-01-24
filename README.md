@@ -1,3 +1,5 @@
+### 🗓️ Calendar
+Today's Hijri Date: Loading...
 ### Hello there 👋
 🌱 I’m currently learning Solidity and Smart contracts @ IvanOnTech Academy.<br>
 💬 Ask me about my learning projects.<br>
