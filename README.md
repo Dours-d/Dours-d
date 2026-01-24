@@ -1,5 +1,6 @@
-# My GitHub Profile 🚀
+# My Profile 🚀
 
-The Hijri date will appear here after the Action runs!
+[//]: # (HIJRI_START)
+[//]: # (HIJRI_END)
+
 ---
-Welcome to my page.
