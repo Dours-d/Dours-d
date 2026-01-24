@@ -4,7 +4,6 @@ on:
     - cron: '0 0 * * *'
   workflow_dispatch: 
 
-# This explicitly tells GitHub the script is allowed to push changes
 permissions:
   contents: write
 
@@ -14,27 +13,39 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Get Hijri Date
-        id: date
+      - name: Get Hijri Date and Update README
+        shell: python
         run: |
-          # We use -L to follow redirects and -f to fail on 404/500
-          RESPONSE=$(curl -sL "http://api.aladhan.com/v1/gToH")
-          HIJRI=$(echo $RESPONSE | jq -r '.data.hijri.date')
-          MONTH=$(echo $RESPONSE | jq -r '.data.hijri.month.en')
-          YEAR=$(echo $RESPONSE | jq -r '.data.hijri.year')
-          echo "full_date=$HIJRI ($MONTH $YEAR)" >> $GITHUB_OUTPUT
+          import urllib.request
+          import json
+          import re
 
-      - name: Update README
-        run: |
-          DATE_VAL="Today's Hijri Date: ${{ steps.date.outputs.full_date }}"
-          # This updated sed command is cleaner for multi-line replacement
-          sed -i "//,// { //! { //! d } }" README.md
-          sed -i "//a $DATE_VAL" README.md
+          # 1. Fetch the date
+          try:
+              with urllib.request.urlopen("http://api.aladhan.com/v1/gToH") as response:
+                  data = json.loads(response.read().decode())
+                  hijri = data['data']['hijri']
+                  date_str = f"Today's Hijri Date: {hijri['date']} ({hijri['month']['en']} {hijri['year']})"
+          except Exception as e:
+              print(f"Error fetching date: {e}")
+              exit(1)
+
+          # 2. Read the README
+          with open("README.md", "r", encoding="utf-8") as f:
+              content = f.read()
+
+          # 3. Replace the content between tags
+          pattern = r"()(.*?)()"
+          replacement = f"\\1\n{date_str}\n\\3"
+          new_content = re.sub(pattern, replacement, content, flags=re.DOTALL)
+
+          # 4. Write back to README
+          with open("README.md", "w", encoding="utf-8") as f:
+              f.write(new_content)
 
       - name: Commit and Push
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          # Only commit if there are actually changes
           git diff --quiet && git diff --staged --quiet || (git commit -m "Update Hijri date" && git push)
