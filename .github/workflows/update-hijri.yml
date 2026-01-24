@@ -1,8 +1,8 @@
 name: Update Hijri Date
 on:
+  workflow_dispatch: # This lets you test it manually
   schedule:
     - cron: '0 0 * * *'
-  workflow_dispatch: 
 
 permissions:
   contents: write
@@ -13,42 +13,37 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Get Hijri Date and Update README
+      - name: Update Date
         shell: python
         run: |
           import urllib.request
           import json
           import re
 
-          # 1. Fetch the date
-          try:
-              with urllib.request.urlopen("http://api.aladhan.com/v1/gToH") as response:
-                  data = json.loads(response.read().decode())
-                  hijri = data['data']['hijri']
-                  # We strip the special 'ʿ' character to avoid encoding issues in some browsers
-                  month_name = hijri['month']['en'].replace('ʿ', '')
-                  date_str = f"Today's Hijri Date: {hijri['day']}-{hijri['month']['number']}-{hijri['year']} ({month_name})"
-          except Exception as e:
-              print(f"Error: {e}")
-              exit(1)
+          # Fetch data
+          with urllib.request.urlopen("http://api.aladhan.com/v1/gToH") as response:
+              data = json.loads(response.read().decode())
+              h = data['data']['hijri']
+              # Clean display string
+              date_str = f"### 🌙 {h['day']} {h['month']['en']} {h['year']} | {h['month']['ar']}"
 
-          # 2. Read the README
+          # Read README
           with open("README.md", "r", encoding="utf-8") as f:
               content = f.read()
 
-          # 3. Precise replacement: This finds everything between the tags and replaces it
+          # Replace logic
           pattern = r".*?"
           replacement = f"\n{date_str}\n"
           new_content = re.sub(pattern, replacement, content, flags=re.DOTALL)
 
-          # 4. Write back
+          # Write README
           with open("README.md", "w", encoding="utf-8") as f:
               f.write(new_content)
 
-
-      - name: Commit and Push
+      - name: Push Changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update Hijri date" && git push)
+          git commit -m "Updated Hijri Date" || exit 0
+          git push
