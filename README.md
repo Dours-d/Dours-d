@@ -1,6 +1,8 @@
 # Asalam Alaykum
 
  [//]: # (HIJRI_START)
+### ﷽
+### 🌙 9 Shaʿbān 1447 | شَعْبان ﷺ
  [//]: # (HIJRI_END)
 
 ---
