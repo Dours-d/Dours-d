@@ -1,12 +1,40 @@
-### Hello there 👋
-🌱 I’m currently learning Solidity and Smart contracts @ IvanOnTech Academy.<br>
-💬 Ask me about my learning projects.<br>
-🔭 I’m currently working on finding a stage.<br>
-📫 How to reach me on Twitter @Gae_mon .
+<style>
+  @font-face {
+    font-family: 'A_Nefel_Botan';
+    src: url('https://raw.githubusercontent.com/Dours-d/Dours-d/main/fonts/A_Nefel_Botan.ttf') format('truetype');
+  }
+  
+  .custom-font {
+    font-family: 'A_Nefel_Botan', sans-serif;
+    font-size: 24px;
+  }
+</style>
 
-<img src="https://www.codewars.com/users/Dours-d/badges/small" alt="">
-<img src="https://komarev.com/ghpvc/?username=dours-d&color=brightgreen&label=visitors&style=flat-square" >
-<img src="https://github-readme-stats.vercel.app/api?username=dours-d&count_private=true&show_icons=true&theme=tokionight&bg_color=#3d351f"
+# Asalam Alaykum
 
-<!--
-**Dours-d/Dours-d** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.-->
+ [//]: # (HIJRI_START)
+### ﷽
+### 🌙 5 Ramaḍān 1447 | رَمَضان ﷺ
+ [//]: # (HIJRI_END)
+
+---
+
+<div style="font-family: 'Courier New', a-nefel-botan ; background-color: #f0f0f0; padding: 10px;">
+  <p class="custom-font">
+   
+أَخْبَرَنَا إِسْحَاقُ بْنُ إِبْرَاهِيمَ، قَالَ أَنْبَأَنَا مُعَاذُ بْنُ هِشَامٍ، قَالَ حَدَّثَنِي أَبِي، عَنْ عَامِرٍ الأَحْوَلِ، عَنْ مَكْحُولٍ، عَنْ عَبْدِ اللَّهِ بْنِ مُحَيْرِيزٍ، عَنْ أَبِي مَحْذُورَةَ، قَالَ عَلَّمَنِي رَسُولُ اللَّهِ صلى الله عليه وسلم الأَذَانَ فَقَالَ ‏ "‏ اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ أَشْهَدُ أَنْ لاَ إِلَهَ إِلاَّ اللَّهُ أَشْهَدُ أَنْ لاَ إِلَهَ إِلاَّ اللَّهُ أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ ثُمَّ يَعُودُ فَيَقُولُ أَشْهَدُ أَنْ لاَ إِلَهَ إِلاَّ اللَّهُ أَشْهَدُ أَنْ لاَ إِلَهَ إِلاَّ اللَّهُ أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ حَىَّ عَلَى الصَّلاَةِ حَىَّ عَلَى الصَّلاَةِ حَىَّ عَلَى الْفَلاَحِ حَىَّ عَلَى الْفَلاَحِ اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ لاَ إِلَهَ إِلاَّ اللَّهُ ‏"‏ ‏.‏
+  
+  </p>
+
+</div>
+   It was narrated that Abu Mahdhura said: "The Messenger of Allah (S.A.W) taught me the Adhan and said: 'Allahu Akbar, Allahu akbar, Allahu Akbar, Allahu Akbar; Ashhadu an la ilaha illallah, Ashhadu an la ilaha illallah; Ashhadu anna Muhammadan Rasulallah, Ashhadu anna Muhammadan Rasulallah (Allah is the Greatest,Allah is the Greatest, Allah is the Greatest, Allah is the Greatest; I bear witness that there is none worthy of worship except Allah, I bear witness that there is none worthy of worship except Allah; I bear witness that Muhammad is the Messenger Allah,I bear witness that Muhammad is the Messenger Allah)'. Then he repeated it and said: 'Ashhadu an la ilaha illallah, Ashhadu an la ilaha illallah; Ashhadu anna Muhammadan Rasulallah, Ashhadu anna Muhammadan Rasulallah; Hayya 'alas-salah, Hayya 'ala-salah; Hayya 'alal-falah Hayya 'alal-falah; Allahu Akbar, Allahu Akbar; La ilaha ill-Allah (I bear witness that there is none worthy of worship except Allah, I bear witness that there is none worthy of worship except Allah; I bear witness that Muhammad is the Messenger of Allah, I bear witness that Muhammad is the Messenger of Allah; Come to prayer, come to prayer; come to prosperity, come to prosperity; Allah is the Greatest, Allah is the Greatest; there is none worthy of worship except Allah).'"
+
+
+---
+Grade:	 Sahih (Darussalam)		
+Reference	 : Sunan an-Nasa'i 631
+In-book reference	 : Book 7, Hadith 6
+English translation	 : Vol. 1, Book 7, Hadith 632
+---
+Sunan an-Nasa'i 631
+https://sunnah.com/nasai:631
