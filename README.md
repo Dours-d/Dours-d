@@ -6,17 +6,10 @@
  [//]: # (HIJRI_END)
 
 ---
-<style>
-  @font-face {
-    font-family: 'A_Nefel_Botan';
-    src: url('https://raw.githubusercontent.com/Dours-d/Dours-d/main/fonts/A_Nefel_Botan.ttf') format('truetype');
-  }
-  
-  .custom-font {
-    font-family: 'A_Nefel_Botan', sans-serif;
-    font-size: 24px;
-  }
-</style>
+<link href="https://raw.githubusercontent.com/Dours-d/Dours-d/main/fonts/A_Nefel_Botan.ttf" rel="stylesheet" type="font/ttf">
+
+<p style="font-family: 'A_Nefel_Batan', sans-serif; font-size: 24px;">
+
 <div style="font-family: 'Courier New', a-nefel-botan ; background-color: #f0f0f0; padding: 10px;">
   <p class="custom-font">
    
