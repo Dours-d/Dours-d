@@ -1,3 +1,11 @@
+# Asalam Alaykum
+
+ [//]: # (HIJRI_START)
+### ﷽
+### 🌙 5 Ramaḍān 1447 | رَمَضان ﷺ
+ [//]: # (HIJRI_END)
+
+---
 <style>
   @font-face {
     font-family: 'A_Nefel_Botan';
@@ -9,16 +17,6 @@
     font-size: 24px;
   }
 </style>
-
-# Asalam Alaykum
-
- [//]: # (HIJRI_START)
-### ﷽
-### 🌙 5 Ramaḍān 1447 | رَمَضان ﷺ
- [//]: # (HIJRI_END)
-
----
-
 <div style="font-family: 'Courier New', a-nefel-botan ; background-color: #f0f0f0; padding: 10px;">
   <p class="custom-font">
    
