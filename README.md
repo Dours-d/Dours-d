@@ -6,7 +6,7 @@
  [//]: # (HIJRI_END)
 
 ---
-<link href="https://raw.githubusercontent.com/Dours-d/Dours-d/main/fonts/A_Nefel_Botan.ttf" rel="stylesheet" type="font/ttf">
+<link href="https://raw.githubusercontent.com/Dours-d/Dours-d/fonts/A_Nefel_Botan.ttf" rel="stylesheet" type="font/ttf">
 
 <p style="font-family: 'A_Nefel_Batan', sans-serif; font-size: 24px;">
 
