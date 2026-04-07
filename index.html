@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdel Haadi Islam | Senior Solutions Architect & Engineering Specialist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0c111d;
+            --card-bg: #111827;
+            --accent: #10b981; /* Emerald: Precision & High-Integrity */
+            --accent-glow: rgba(16, 185, 129, 0.2);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #1f2937;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text-main); line-height: 1.6; }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 80px 40px; }
+
+        /* Catchy Hero Section */
+        header { border-bottom: 1px solid var(--border); padding-bottom: 60px; margin-bottom: 60px; }
+        .badge { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; border: 1px solid var(--accent); }
+        h1 { font-size: 3.5rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 10px; line-height: 1.1; background: linear-gradient(to right, #f8fafc, #10b981); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { font-size: 1.5rem; color: var(--text-muted); font-weight: 500; margin-bottom: 30px; }
+        .contact-row { display: flex; gap: 30px; }
+        .contact-item { display: flex; align-items: center; gap: 8px; color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.9rem; }
+        .contact-muted { color: var(--text-muted) !important; }
+        .muted-text { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px; }
+
+        /* The Expertise Matrix */
+        h2 { font-size: 1.5rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; color: var(--accent); display: flex; align-items: center; }
+        h2:after { content: ""; flex: 1; height: 1px; background: var(--border); margin-left: 20px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px; }
+        .card { background: var(--card-bg); padding: 30px; border-radius: 24px; border: 1px solid var(--border); transition: all 0.3s ease; }
+        .card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 30px -10px var(--accent-glow); }
+        .card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 15px; color: var(--accent); }
+        .card p { font-size: 0.95rem; color: var(--text-muted); }
+
+        /* The Strategy Timeline */
+        .exp-item { margin-bottom: 40px; padding-left: 30px; border-left: 2px solid var(--border); position: relative; }
+        .exp-item:before { content: ""; position: absolute; left: -6px; top: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+        .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+        .exp-title { font-size: 1.25rem; font-weight: 700; color: #fff; }
+        .exp-date { font-size: 0.85rem; font-weight: 700; color: var(--accent); }
+        .exp-list { list-style: none; margin-top: 15px; }
+        .exp-list li { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px; position: relative; }
+        .exp-list li:before { content: "→"; color: var(--accent); position: absolute; left: -25px; font-weight: 700; }
+
+        footer { margin-top: 80px; text-align: center; color: var(--text-muted); font-size: 0.85rem; padding-top: 40px; border-top: 1px solid var(--border); }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .container { padding: 40px 20px; }
+            .contact-row { flex-direction: column; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="badge">Technical Heritage & Engineering Integrity</div>
+            <h1>Abdel Haadi Islam</h1>
+            <p class="subtitle">Senior Solutions Architect | Structural Mastery & Precision Systems</p>
+            <div class="contact-row">
+                <a href="mailto:dours_d@protonmail.com" class="contact-item">dours_d@protonmail.com</a>
+                <a href="https://linkedin.com/in/gafichet" class="contact-item">linkedin.com/in/gafichet</a>
+                <span class="contact-item contact-muted">Porto & Ankara Deployment</span>
+            </div>
+        </header>
+
+        <section>
+            <h2>Technical DNA</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Structural Integrity</h3>
+                    <p>Leveraging a **Twelve-Year Erratum** in Master Craftsmanship (Charpentier), I architect digital systems with the structural geometry of the physical world. I build systems with zero margin for error.</p>
+                </div>
+                <div class="card">
+                    <h3>Industrial Data Logic</h3>
+                    <p>Deep technical heritage in **Industrial Logistics (Parker Hannifin/Invensys)**. Expert in managing massive data ingestion on high-rigor legacy SQL and AS400 core systems—the genesis of a deliberate pivot away from legacy banking.</p>
+                </div>
+                <div class="card">
+                    <h3>Web3 Materialization</h3>
+                    <p>Architecting secure high-concurrency Node.js transaction layers. Specialized in NFT real-estate scalability, decentralized transactions, and automated audit pipelines.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Strategic Journey</h2>
+            
+            <div class="exp-item">
+                <div class="exp-header">
+                    <span class="exp-title">Web3 Senior Technical Architect (Digital Materialization)</span>
+                    <span class="exp-date">2021 — PRESENT</span>
+                </div>
+                <ul class="exp-list">
+                    <li>Developed and deployed custom Node.js/Web3 automation engines for high-load asset management and on-chain transaction scaling.</li>
+                    <li>Architected structural high-concurrency scraping nodes focused on absolute data reliability for the metaverse and real-estate markets.</li>
+                </ul>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <span class="exp-title">Master Craftsmanship: Charpentier (Twelve-Year Realization)</span>
+                    <span class="exp-date">PHYSICAL DEPTH</span>
+                </div>
+                <p class="muted-text">Mastery of Physical Structural Geometry and Architectural Materialization.</p>
+                <ul class="exp-list">
+                    <li>Specialized in technical drawing and volume projection (**Art du Trait**). I apply this 'un-skin precision' framework to every digital architecture I design.</li>
+                </ul>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <span class="exp-title">Industrial Logistics & Data Management (Parker Hannifin / Invensys)</span>
+                    <span class="exp-date">2 YEARS INTENSITY (EARLY CAREER)</span>
+                </div>
+                <p class="muted-text">Sun Microsystems & Banking Database Heritage.</p>
+                <ul class="exp-list">
+                    <li>D.U.T. O.G.P. (Production Management & Information Systems).</li>
+                    <li>First implementation of industrial data cores on legacy AS400 ecosystems at an international logistics level.</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            Built with Industrial Precision & Master Craftsmanship.
+        </footer>
+    </div>
+</body>
+</html>
