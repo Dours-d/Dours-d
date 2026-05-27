@@ -2,7 +2,7 @@
 
  [//]: # (HIJRI_START)
 ### ﷽
-### 🌙 9 Dhū al-Ḥijjah 1447 | ذوالحجة ﷺ
+### 🌙 10 Dhū al-Ḥijjah 1447 | ذوالحجة ﷺ
  [//]: # (HIJRI_END)
 
 ---
