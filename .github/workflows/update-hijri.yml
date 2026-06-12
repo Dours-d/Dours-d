@@ -17,61 +17,112 @@ jobs:
         shell: python
         run: |
           import urllib.request
+          import urllib.error
           import json
           import sys
 
+          TIMEOUT_SECONDS = 15
+
           # 1. Get the Date
           try:
-              with urllib.request.urlopen("http://api.aladhan.com/v1/gToH") as response:
-                  data = json.loads(response.read().decode())
-                  h = data['data']['hijri']
-                  
-                  # Formatting with Ligatures: ﷽ at the top and ﷺ after the month
-                  # Use <h3> for better visibility on the profile
-                  date_str = (
-                      "### ﷽\n"
-                      f"### 🌙 {h['day']} {h['month']['en']} {h['year']} | {h['month']['ar']} ﷺ"
-                  )
-          except Exception as e:
-              print(f"API Error: {e}")
+              req = urllib.request.Request("http://api.aladhan.com/v1/gToH")
+              with urllib.request.urlopen(req, timeout=TIMEOUT_SECONDS) as response:
+                  if response.status != 200:
+                      print(f"API returned unexpected status: {response.status}")
+                      sys.exit(1)
+                  raw = response.read().decode()
+          except urllib.error.HTTPError as e:
+              print(f"API HTTP error {e.code}: {e.reason}")
               sys.exit(1)
+          except urllib.error.URLError as e:
+              print(f"API connection error: {e.reason}")
+              sys.exit(1)
+          except TimeoutError:
+              print(f"API request timed out after {TIMEOUT_SECONDS}s")
+              sys.exit(1)
+
+          try:
+              data = json.loads(raw)
+          except json.JSONDecodeError as e:
+              print(f"API returned invalid JSON: {e}")
+              sys.exit(1)
+
+          hijri = data.get('data', {}).get('hijri')
+          if not hijri:
+              print(f"Unexpected API response structure: missing 'data.hijri'. Response keys: {list(data.keys())}")
+              sys.exit(1)
+
+          required_fields = {'day': hijri.get('day'), 'year': hijri.get('year')}
+          month = hijri.get('month', {})
+          required_fields['month.en'] = month.get('en')
+          required_fields['month.ar'] = month.get('ar')
+
+          missing = [k for k, v in required_fields.items() if not v]
+          if missing:
+              print(f"API response missing required fields: {', '.join(missing)}")
+              sys.exit(1)
+
+          date_str = (
+              "### ﷽\n"
+              f"### 🌙 {required_fields['day']} {required_fields['month.en']} {required_fields['year']} | {required_fields['month.ar']} ﷺ"
+          )
 
           # 2. Markers (Must match exactly what is in your README.md)
           start_tag = "[//]: # (HIJRI_START)"
           end_tag = "[//]: # (HIJRI_END)"
 
           # 3. Read README
-          with open("README.md", "r", encoding="utf-8") as f:
-              lines = f.readlines()
+          try:
+              with open("README.md", "r", encoding="utf-8") as f:
+                  lines = f.readlines()
+          except FileNotFoundError:
+              print("README.md not found in the repository root.")
+              sys.exit(1)
+          except OSError as e:
+              print(f"Failed to read README.md: {e}")
+              sys.exit(1)
 
           # 4. Filter and Replace
           new_lines = []
           skip = False
-          tag_found = False
+          start_found = False
+          end_found = False
 
           for line in lines:
               if start_tag in line:
                   new_lines.append(line)
-                  new_lines.append(date_str + "\n") # Insert the new date & ligatures
+                  new_lines.append(date_str + "\n")
                   skip = True
-                  tag_found = True
+                  start_found = True
               elif end_tag in line:
                   new_lines.append(line)
                   skip = False
+                  end_found = True
               elif not skip:
                   new_lines.append(line)
 
-          if not tag_found:
-              print("Tags not found! Check your README.md markers.")
+          if not start_found:
+              print(f"Start marker not found: {start_tag}")
+              sys.exit(1)
+          if not end_found:
+              print(f"End marker not found: {end_tag} — content after start marker would be lost.")
               sys.exit(1)
 
           # 5. Write back
-          with open("README.md", "w", encoding="utf-8") as f:
-              f.writelines(new_lines)
+          try:
+              with open("README.md", "w", encoding="utf-8") as f:
+                  f.writelines(new_lines)
+          except OSError as e:
+              print(f"Failed to write README.md: {e}")
+              sys.exit(1)
       - name: Push Changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m "Clean Hijri Update" || exit 0
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Clean Hijri Update"
           git push
