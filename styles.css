@@ -1,1 +1,314 @@
-@font-face { font-family: 'NefelBotan'; src: url('https://raw.githubusercontent.com/Dours-d/Dours-d/main/fonts/A_Nefel_Botan.ttf') format('truetype'); } .hadith-text { font-family: 'NefelBotan', serif; font-size: 18px; line-height: 1.8; padding: 10px; background-color: #f0f0f0; }
+/* ==========================================================================
+   Design Tokens
+   ========================================================================== */
+
+:root {
+    /* Colors */
+    --bg: #0c111d;
+    --card-bg: #111827;
+    --accent: #10b981;
+    --accent-glow: rgba(16, 185, 129, 0.2);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border: #1f2937;
+
+    /* Type Scale */
+    --text-xs: 0.75rem;
+    --text-sm: 0.85rem;
+    --text-base: 0.9rem;
+    --text-md: 0.95rem;
+    --text-lg: 1.25rem;
+    --text-xl: 1.5rem;
+    --text-2xl: 2.5rem;
+    --text-3xl: 3.5rem;
+
+    /* Font Weights */
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --font-extrabold: 800;
+
+    /* Spacing */
+    --space-xs: 10px;
+    --space-sm: 15px;
+    --space-md: 20px;
+    --space-lg: 30px;
+    --space-xl: 40px;
+    --space-2xl: 60px;
+    --space-3xl: 80px;
+
+    /* Borders */
+    --border-thin: 1px solid var(--border);
+    --radius-lg: 24px;
+    --radius-full: 20px;
+}
+
+/* ==========================================================================
+   Base Reset & Body
+   ========================================================================== */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   Font Faces
+   ========================================================================== */
+
+@font-face {
+    font-family: 'NefelBotan';
+    src: url('https://raw.githubusercontent.com/Dours-d/Dours-d/main/fonts/A_Nefel_Botan.ttf') format('truetype');
+}
+
+/* ==========================================================================
+   Shared Utilities
+   ========================================================================== */
+
+/* Accent-colored text: .badge, h2, .card h3, .exp-date, .exp-list li:before, .contact-item */
+.text-accent { color: var(--accent); }
+
+/* Muted text: replaces .muted-text and .contact-muted */
+.text-muted { color: var(--text-muted); }
+
+/* Shared heading size for .card h3 and .exp-title (1.25rem / 700) */
+.card h3,
+.exp-title {
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+}
+
+/* Shared small body text (0.9rem) for .contact-item, .exp-list li, .text-muted */
+.contact-item,
+.exp-list li,
+.text-muted {
+    font-size: var(--text-base);
+}
+
+/* Shared smallest text (0.85rem) for .exp-date, footer */
+.exp-date,
+footer {
+    font-size: var(--text-sm);
+}
+
+/* Hadith text (from original styles.css) */
+.hadith-text {
+    font-family: 'NefelBotan', serif;
+    font-size: 18px;
+    line-height: 1.8;
+    padding: var(--space-xs);
+    background-color: #f0f0f0;
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: var(--space-3xl) var(--space-xl);
+}
+
+/* ==========================================================================
+   Hero / Header
+   ========================================================================== */
+
+header {
+    border-bottom: var(--border-thin);
+    padding-bottom: var(--space-2xl);
+    margin-bottom: var(--space-2xl);
+}
+
+.badge {
+    display: inline-block;
+    background: var(--accent-glow);
+    color: var(--accent);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--space-md);
+    border: 1px solid var(--accent);
+}
+
+h1 {
+    font-size: var(--text-3xl);
+    font-weight: var(--font-extrabold);
+    letter-spacing: -1px;
+    margin-bottom: var(--space-xs);
+    line-height: 1.1;
+    background: linear-gradient(to right, #f8fafc, #10b981);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: var(--text-xl);
+    color: var(--text-muted);
+    font-weight: var(--font-medium);
+    margin-bottom: var(--space-lg);
+}
+
+.contact-row {
+    display: flex;
+    gap: var(--space-lg);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent);
+    font-weight: var(--font-semibold);
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   Section Headings
+   ========================================================================== */
+
+h2 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-extrabold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: var(--space-xl);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+}
+
+h2:after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    margin-left: var(--space-md);
+}
+
+/* ==========================================================================
+   Card Grid
+   ========================================================================== */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+}
+
+.card {
+    background: var(--card-bg);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    border: var(--border-thin);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px -10px var(--accent-glow);
+}
+
+.card h3 {
+    margin-bottom: var(--space-sm);
+    color: var(--accent);
+}
+
+.card p {
+    font-size: var(--text-md);
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Experience Timeline
+   ========================================================================== */
+
+.exp-item {
+    margin-bottom: var(--space-xl);
+    padding-left: var(--space-lg);
+    border-left: 2px solid var(--border);
+    position: relative;
+}
+
+.exp-item:before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: var(--space-xs);
+}
+
+.exp-title {
+    color: #fff;
+}
+
+.exp-date {
+    font-weight: var(--font-bold);
+    color: var(--accent);
+}
+
+.text-muted {
+    margin-bottom: var(--space-xs);
+}
+
+.exp-list {
+    list-style: none;
+    margin-top: var(--space-sm);
+}
+
+.exp-list li {
+    color: var(--text-muted);
+    margin-bottom: var(--space-xs);
+    position: relative;
+}
+
+.exp-list li:before {
+    content: "\2192";
+    color: var(--accent);
+    position: absolute;
+    left: -25px;
+    font-weight: var(--font-bold);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+footer {
+    margin-top: var(--space-3xl);
+    text-align: center;
+    color: var(--text-muted);
+    padding-top: var(--space-xl);
+    border-top: var(--border-thin);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    h1 { font-size: var(--text-2xl); }
+    .container { padding: var(--space-xl) var(--space-md); }
+    .contact-row { flex-direction: column; gap: var(--space-sm); }
+}
