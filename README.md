@@ -2,7 +2,7 @@
 
  [//]: # (HIJRI_START)
 ### ﷽
-### 🌙 14 Jumādá al-ākhirah 1448 | جُمادى الآخرة ﷺ
+### 🌙 15 Jumādá al-ākhirah 1448 | جُمادى الآخرة ﷺ
  [//]: # (HIJRI_END)
 
 ---
